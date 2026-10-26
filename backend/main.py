@@ -45,7 +45,7 @@ app.add_middleware(
 )
 
 # SQLite Cache setup
-DB_FILE = "cache.db"
+DB_FILE = "/tmp/cache.db" if os.environ.get("VERCEL") else os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache.db")
 db_lock = threading.Lock()
 
 def init_db():
